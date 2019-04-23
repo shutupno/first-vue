@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <titleH :meg="t"></titleH>
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
     <div class="box">
@@ -7,17 +8,55 @@
         这个是测试sass的
       </div>
     </div>
+
+    <msgChild
+    ref="msgRef"
+    @childsClick="btnClick"
+    :msgTest='msgTest2'
+    :helloTest='helloTest2'
+    :CCCount='CCCount'
+  >
+  </msgChild>
   </div>
 </template>
 
 <script>
+// 引入子组件　
+  import msgChild from './test.vue';
+  import titleH from './title.vue';
 export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      msgTest2:'',
+      helloTest2:'',
+      CCCount:0,
+      btnVal:'',
+      t:"首页"
     }
-  }
+  },
+  components:{
+    // 声明子组件名字  
+    msgChild,
+    titleH
+  },
+  created(){
+      this.msgs()
+    },
+    methods:{
+      msgs(){
+　　　  // 给子组件变量赋值
+        this.msgTest2 = '测试1'
+        this.helloTest2 = '测试2'
+      },
+      btnClick(val) {
+        this.CCCount++
+        this.btnVal = val
+        // 触发子组件中的函数    
+        this.$refs.msgRef.msgs1()
+      }
+    }
 }
 </script>
 
