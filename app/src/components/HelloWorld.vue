@@ -1,14 +1,15 @@
 <template>
   <div class="hello">
-    <titleH :meg="t"></titleH>
+    <!-- <titleH :meg="t"></titleH> -->
     <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <div class="box">
+    <!-- <div class="box">
       <div class="ch">
         这个是测试sass的
       </div>
-    </div>
-
+    </div> -->
+    <router-link to="/index">index</router-link>
+    <router-link to="/touch">touch</router-link>
+    <router-link to="/down">down</router-link>
     <msgChild
     ref="msgRef"
     @childsClick="btnClick"
@@ -23,12 +24,12 @@
 <script>
 // 引入子组件　
   import msgChild from './test.vue';
-  import titleH from './title.vue';
+  // import titleH from './title.vue';
 export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App',
+      msg: '这个是HelloWorld',
       msgTest2:'',
       helloTest2:'',
       CCCount:0,
@@ -39,7 +40,7 @@ export default {
   components:{
     // 声明子组件名字  
     msgChild,
-    titleH
+    // titleH
   },
   created(){
       this.msgs()
