@@ -5,7 +5,7 @@
         </div>
         <v-scroll :no-refresh="onRefresh" :on-infinite="onInfinite" :dataList="scrollData">
             <ul class="listItem">
-                <li v-for="(item,index) in listdata">
+                <li v-for="(item,index) in listdata" :key="index">
                     <span>{{item.date}}</span>
                     <span>{{item.portfolio}}</span>
                     <span :class="{'state0' : (item.state===0),'state1' : (item.state == 1),state2:(item.state===2)}">{{item.drop}}</span>

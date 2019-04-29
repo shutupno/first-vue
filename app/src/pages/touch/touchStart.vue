@@ -1,6 +1,6 @@
 <template>
     <div class="index">
-        <my-scroll :page="page" :on-refresh="onRefresh" :on-pull="onPull">
+        <my-scroll :page="page" :onRefresh="onRefresh" :onPull="onPull">
         <div slot="scrollList">
             <ul>
                 <li v-for="(x,index) in list" :key="index">{{index}}列表</li>
@@ -31,13 +31,13 @@
                 },500)
             },
             onPull(mun){ //加载回调
-            console.log('这是上拉加载');
+                 console.log('这是上拉加载');
                 if(this.page.counter <= this.page.total){
                     setTimeout(()=>{
                         this.page.counter++
                         this.$root.$emit('setState',5)
                         for(let i=0;i<10;i++){
-                            this.listdata.push(i)
+                            this.list.push(i)
                         }
                     },500)
                 }else{

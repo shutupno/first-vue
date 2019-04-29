@@ -10,6 +10,8 @@
     <router-link to="/index">index</router-link>
     <router-link to="/touch">touch</router-link>
     <router-link to="/down">down</router-link>
+    <button @click="onlayer">弹框</button>
+    <layer ref="myConfirm"></layer>
     <msgChild
     ref="msgRef"
     @childsClick="btnClick"
@@ -24,6 +26,7 @@
 <script>
 // 引入子组件　
   import msgChild from './test.vue';
+  import layer from '../components/layer.vue';
   // import titleH from './title.vue';
 export default {
   name: 'HelloWorld',
@@ -40,6 +43,7 @@ export default {
   components:{
     // 声明子组件名字  
     msgChild,
+    layer
     // titleH
   },
   created(){
@@ -56,6 +60,14 @@ export default {
         this.btnVal = val
         // 触发子组件中的函数    
         this.$refs.msgRef.msgs1()
+      },
+      onlayer(){
+        this.$refs.myConfirm.show('这个是弹窗', {
+            type: 'layer',
+            layerText: '确定',
+            titleText: '消息提示',
+            data: '我是外界传进来的数据'
+        });
       }
     }
 }

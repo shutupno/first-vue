@@ -109,12 +109,16 @@
             },
             touchEnd(e){
                 if(this.aspect == 2&&this.state == 2||this.state == 1){ //上拉处理
-                    this.top = 100
-                    this.state = 1
-                    this.topCallback()
+                    // this.top = 100
+                    // this.state = 1
+                    // this.topCallback()
+                    this.state = 0
+                    this.top = 0
+                    this.bottomCallback()
                 }else if(this.aspect == 2){
                     this.state = 0
                     this.top = 0
+                    this.bottomCallback()
                 }
             },
             topCallback(){ //刷新回调
